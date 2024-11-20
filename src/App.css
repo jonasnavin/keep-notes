@@ -1,0 +1,20 @@
+.header, .footer {
+    background-color: #82B0D9;
+    color: #fff;
+    align-content: center;
+    text-align: center;
+}
+
+.header {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer {
+    height: 5vh;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
