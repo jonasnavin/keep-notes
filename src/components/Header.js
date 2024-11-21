@@ -8,25 +8,27 @@ import { Link } from 'react-router-dom'
 const Header = () => {
     return (
         <header className='header'>
-            <h1>Keep Notes</h1>
+            <Link to='/'>
+                <h2>Keep Notes</h2>
+            </Link>
             <SearchNote />
             <Link to='/'>
-                <button className="home">
+                <button className="nav-button">
                     <MdHome /> Home
                 </button>
             </Link>
             <Link to='/add-note'>
-                <button className='add-button'>
+                <button className='nav-button'>
                     <BiSolidAddToQueue /> Add
                 </button>
             </Link>
             <Link to='/archived-notes'>
-                <button className='archive-button'>
+                <button className='nav-button'>
                     <MdArchive /> Archived
                 </button>
             </Link>
             <Link to='/trash'>
-                <button className="delete-button">
+                <button className="nav-button">
                     <FaTrash /> Trash
                 </button>
             </Link>

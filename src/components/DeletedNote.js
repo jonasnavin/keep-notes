@@ -1,25 +1,46 @@
 import React, { useContext } from 'react'
 import DataContext from '../context/DataContext'
+import { MdOutlineSettingsBackupRestore } from 'react-icons/md'
+import { TbTrashXFilled } from 'react-icons/tb'
 
 const DeletedNote = () => {
-    const { trash, handleRecover, handlePermanentDelete } = useContext(DataContext)
+    const { trash, search, handleRestore, handlePermanentDelete } = useContext(DataContext)
+    const finalNotes = trash.filter(note => (
+        (note.title).toLowerCase().includes(search.toLowerCase()) ||
+        (note.body).toLowerCase().includes(search.toLowerCase())
+    )).reverse()
     return (
-        <>
+        <section className='notes-section'>
             {
-                trash.map(note => (
-                    <article key={note.id}>
-                        <h3>{note.title}</h3>
-                        <p>{note.body}</p>
-                        <button
-                        onClick={() => handleRecover(note.id)}
-                        >Restore</button>
-                        <button
-                        onClick={() => handlePermanentDelete(note.id)}
-                        >Delete Permanently</button>
+                finalNotes.map(note => (
+                    <article
+                        key={note.id}
+                        className='notes'
+                    >
+                        <div className="content-section">
+                            <h3 className='note-title'>{note.title}</h3>
+                            <p className='note-body'>{note.body}</p>
+                        </div>
+                        <div className='button-section'>
+                            <button
+                                title='Delete Permanently'
+                                className='button-groups delete-button'
+                                onClick={() => handlePermanentDelete(note.id)}
+                            >
+                                <TbTrashXFilled />
+                            </button>
+                            <button
+                                title='Restore Note'
+                                className='button-groups restore-button'
+                                onClick={() => handleRestore(note.id)}
+                            >
+                                <MdOutlineSettingsBackupRestore />
+                            </button>
+                        </div>
                     </article>
                 ))
             }
-        </>
+        </section>
     )
 }
 

@@ -13,19 +13,25 @@ const EditNote = () => {
     }
   }, [note, setEditTitle, setEditBody])
   return (
-    <form onSubmit={e => e.preventDefault()}>
+    <form
+    className='edit-form'
+    onSubmit={e => e.preventDefault()}>
       <input
         type="text"
         autoFocus
+        className='edit-title'
         value={editTitle}
         onChange={e => setEditTitle(e.target.value)}
         />
       <input
         type="text"
+        className='edit-body'
         value={editBody}
         onChange={e => setEditBody(e.target.value)}
         />
-        <button onClick={() => handleEditedSubmit(id)}>Submit</button>
+        <button
+        className='edit-submit-button'
+        onClick={() => handleEditedSubmit(id)}>Submit</button>
     </form>
   )
 }
