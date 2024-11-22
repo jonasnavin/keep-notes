@@ -12,7 +12,7 @@ const AddNote = () => {
       className='add-form'
       onSubmit={handleSubmit}
     >
-      <section>
+      <section className='section-1'>
         <input
           className='title-input'
           type="text"
@@ -28,14 +28,14 @@ const AddNote = () => {
           onChange={e => setNoteBody(e.target.value)}
         />
       </section>
-      <div>
+      <section className='section-2'>
         <button
           type='submit'
           className='add-button'
         >
           Add
         </button>
-      </div>
+      </section>
     </form>
   )
 }

@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,10 +18,11 @@ export const DataProvider = ({ children }) => {
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
+        const dateTime = format(new Date(), 'd MMMM, yyyy p')
         e.preventDefault()
-        if (noteTitle && noteBody){
+        if (noteTitle && noteBody) {
             const id = Math.random() * 10
-            const note = { id, title: noteTitle, body: noteBody }
+            const note = { id, title: noteTitle, body: noteBody, dateTime: dateTime }
             const addNote = [...notes, note]
             setNotes(addNote)
             localStorage.setItem('notes', JSON.stringify(addNote))
@@ -88,11 +90,18 @@ export const DataProvider = ({ children }) => {
     }
 
     const handleEditedSubmit = (id) => {
-        const editedNote = { id: parseFloat(id), title: editTitle, body: editBody }
+        const dateTime = format(new Date(), 'd MMMM, yyyy p')
+        const editedNote = { id: parseFloat(id), title: editTitle, body: editBody, dateTime: dateTime }
         const updatedNote = notes.map(note => (note.id).toString() === id ? { ...editedNote } : note)
         setNotes(updatedNote)
         navigate('/')
         localStorage.setItem('notes', JSON.stringify(updatedNote))
+    }
+
+    const handleCancel = (id) => {
+        setNotes(notes)
+        navigate('/')
+        localStorage.setItem('notes', JSON.stringify(notes))
     }
 
     return (
@@ -108,7 +117,7 @@ export const DataProvider = ({ children }) => {
             handleRestore, handleArchives,
             handleArchivedDelete, handleUnarchive,
             handlePermanentDelete, navigate,
-            handleEditedSubmit
+            handleEditedSubmit, handleCancel
         }}>
             {children}
         </DataContext.Provider>

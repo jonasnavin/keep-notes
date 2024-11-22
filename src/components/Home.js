@@ -24,6 +24,10 @@ const Home = () => {
                                 <p className='note-body'>{note.body}</p>
                             </Link>
                         </div>
+                        <div className='bottom-section'>
+                        <div>
+                            <p style={{fontSize: '12px'}}>{note.dateTime}</p>
+                        </div>
                         <div className='button-section'>
                             <button
                                 title='Delete Note'
@@ -47,6 +51,7 @@ const Home = () => {
                                     <MdEdit />
                                 </Link>
                             </button>
+                        </div>
                         </div>
                     </article>
                 ))
