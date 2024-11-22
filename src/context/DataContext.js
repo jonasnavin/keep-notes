@@ -16,6 +16,17 @@ export const DataProvider = ({ children }) => {
     const [trash, setTrash] = useState(JSON.parse(localStorage.getItem('deleted')) || [])
     const [archived, setArchived] = useState(JSON.parse(localStorage.getItem('archived')) || [])
     const navigate = useNavigate()
+    const [activeSection, setActiveSection] = useState('home')
+    const [menu, setMenu] = useState('hide')
+
+    const handleClick = (message) => {
+        setActiveSection(message)
+    }
+
+    const handleMenu = (message) => {
+        setMenu(message)
+        console.log(message)
+    }
 
     const handleSubmit = (e) => {
         const dateTime = format(new Date(), 'd MMMM, yyyy p')
@@ -98,7 +109,7 @@ export const DataProvider = ({ children }) => {
         localStorage.setItem('notes', JSON.stringify(updatedNote))
     }
 
-    const handleCancel = (id) => {
+    const handleCancel = () => {
         setNotes(notes)
         navigate('/')
         localStorage.setItem('notes', JSON.stringify(notes))
@@ -113,11 +124,13 @@ export const DataProvider = ({ children }) => {
             noteBody, setNoteBody,
             search, setSearch,
             handleSubmit, handleDelete,
-            trash, archived,
+            trash, archived, menu, setMenu,
             handleRestore, handleArchives,
             handleArchivedDelete, handleUnarchive,
             handlePermanentDelete, navigate,
-            handleEditedSubmit, handleCancel
+            handleEditedSubmit, handleCancel,
+            activeSection, setActiveSection,
+            handleClick, handleMenu
         }}>
             {children}
         </DataContext.Provider>

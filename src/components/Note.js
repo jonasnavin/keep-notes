@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import DataContext from '../context/DataContext'
 import { MdArchive, MdEdit } from 'react-icons/md'
@@ -6,8 +6,11 @@ import { TbTrashXFilled } from 'react-icons/tb'
 
 const Note = () => {
     const { id } = useParams()
-    const { notes, handleDelete, handleArchives } = useContext(DataContext)
+    const { notes, handleDelete, handleArchives, setSearch } = useContext(DataContext)
     const note = notes.find(note => (note.id).toString() === id)
+    useEffect(() => {
+          setSearch('')
+      }, [setSearch])
     return (
         <section className='view-note'>
             {

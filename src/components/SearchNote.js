@@ -1,27 +1,35 @@
 import React, { useContext } from 'react'
-import { GoSearch } from 'react-icons/go'
 import DataContext from '../context/DataContext'
+import { HiOutlineXMark } from 'react-icons/hi2'
 
 const SearchNote = () => {
-  const {search, setSearch} = useContext(DataContext)
+  const { search, setSearch } = useContext(DataContext)
   return (
     <form
       className="search-form"
       onSubmit={e => e.preventDefault()}
     >
+      <button
+        className="search"
+      >
+        🔍
+      </button>
       <input
         type="text"
         className='search-input'
-        placeholder='🔍 Search Notes'
+        placeholder='Search Notes'
         value={search}
         onChange={e => setSearch(e.target.value)}
       />
-      <button
-      className="search-button"
-      onClick={() => setSearch('')}
-      >
-        <GoSearch />
-      </button>
+      {
+        search &&
+        <button
+          className="search-button"
+          onClick={() => setSearch('')}
+        >
+          <HiOutlineXMark />
+        </button>
+      }
     </form>
   )
 }

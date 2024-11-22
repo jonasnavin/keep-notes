@@ -1,37 +1,79 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SearchNote from './SearchNote'
 import { BiSolidAddToQueue } from 'react-icons/bi'
 import { MdArchive, MdHome } from 'react-icons/md'
-import { FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import logo from '../images/logo.png'
+import { TbTrashXFilled } from 'react-icons/tb'
+import DataContext from '../context/DataContext'
+import useWindowSize from '../hooks/useWindowSize'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 const Header = () => {
+
+    const { activeSection, handleClick, menu, handleMenu } = useContext(DataContext)
+
+    const { width } = useWindowSize()
+
     return (
         <header className='header'>
-            <Link to='/'>
-                <h2>Keep Notes</h2>
-            </Link>
-            <SearchNote />
-            <Link to='/'>
-                <button className="nav-button">
-                    <MdHome /> Home
-                </button>
-            </Link>
-            <Link to='/add-note'>
-                <button className='nav-button'>
-                    <BiSolidAddToQueue /> Add
-                </button>
-            </Link>
-            <Link to='/archived-notes'>
-                <button className='nav-button'>
-                    <MdArchive /> Archived
-                </button>
-            </Link>
-            <Link to='/trash'>
-                <button className="nav-button">
-                    <FaTrash /> Trash
-                </button>
-            </Link>
+            <div className='logo'>
+                <div className={`menu  ${width < 720 ? '' : 'visible'}`}>
+                    <GiHamburgerMenu
+                    className='menu-bar'
+                    onClick={() => handleMenu('menu')}
+                    />
+                </div>
+                <Link to='/'>
+                    <img src={logo} alt="logo" />
+                </Link>
+                <h2>
+                    <Link to='/'>
+                        Keep Notes
+                    </Link>
+                </h2>
+            </div>
+            <nav className={`navigation  ${width < 720 && menu === 'menu' ? 'visible' : 'sidebar'}`}>
+                <div className="nav">
+                    <SearchNote />
+                    <Link to='/'>
+                        <button
+                            title='Home'
+                            className={`nav-button ${activeSection === 'home' ? 'active' : ''}`}
+                            onClick={() => handleClick('home')}
+                        >
+                            <MdHome /> Home
+                        </button>
+                    </Link>
+                    <Link to='/add-note'>
+                        <button
+                            title='Add Note'
+                            className={`nav-button ${activeSection === 'add' ? 'active' : ''}`}
+                            onClick={() => handleClick('add')}
+                        >
+                            <BiSolidAddToQueue /> Add
+                        </button>
+                    </Link>
+                    <Link to='/archived-notes'>
+                        <button
+                            title='Archived'
+                            className={`nav-button ${activeSection === 'archive' ? 'active' : ''}`}
+                            onClick={() => handleClick('archive')}
+                        >
+                            <MdArchive /> Archive
+                        </button>
+                    </Link>
+                    <Link to='/trash'>
+                        <button
+                            title='Trash'
+                            className={`nav-button ${activeSection === 'trash' ? 'active' : ''}`}
+                            onClick={() => handleClick('trash')}
+                        >
+                            <TbTrashXFilled />Trash
+                        </button>
+                    </Link>
+                </div>
+            </nav>
         </header>
     )
 }

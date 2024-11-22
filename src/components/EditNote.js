@@ -3,7 +3,7 @@ import DataContext from '../context/DataContext'
 import { useParams } from 'react-router-dom'
 
 const EditNote = () => {
-  const { notes, editTitle, setEditTitle, editBody, setEditBody, handleEditedSubmit, handleCancel } = useContext(DataContext)
+  const { notes, editTitle, setEditTitle, editBody, setEditBody, handleEditedSubmit, handleCancel, setSearch } = useContext(DataContext)
   const { id } = useParams()
   const note = notes.find(note => (note.id).toString() === id)
   useEffect(() => {
@@ -12,6 +12,9 @@ const EditNote = () => {
       setEditBody(note.body)
     }
   }, [note, setEditTitle, setEditBody])
+  useEffect(() => {
+    setSearch('')
+  }, [setSearch])
   return (
     <form
       className='edit-form'
@@ -38,7 +41,7 @@ const EditNote = () => {
         </button>
         <button
           className='cancel-button'
-          onClick={() => handleCancel(id)}
+          onClick={handleCancel}
         >
           Cancel
         </button>
