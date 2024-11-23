@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import AddNote from "./AddNote";
@@ -6,7 +6,6 @@ import ArchivedNote from "./ArchivedNote";
 import DeletedNote from "./DeletedNote";
 import EditNote from "./EditNote";
 import Note from "./Note";
-import DataContext from "../context/DataContext";
 
 const Main = () => {
 

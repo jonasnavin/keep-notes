@@ -13,8 +13,7 @@ const Header = () => {
         activeSection,
         handleClick,
         menu,
-        toggleSidebar,
-        handleSearchbarVisiblity,
+        toggleSidebar
     } = useContext(DataContext);
 
     const { width } = useWindowSize();
