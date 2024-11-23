@@ -17,15 +17,14 @@ export const DataProvider = ({ children }) => {
     const [archived, setArchived] = useState(JSON.parse(localStorage.getItem('archived')) || [])
     const navigate = useNavigate()
     const [activeSection, setActiveSection] = useState('home')
-    const [menu, setMenu] = useState('hide')
+    const [menu, setMenu] = useState(false)
+
+    const toggleSidebar = () => {
+        setMenu(prevState => !prevState)
+    }
 
     const handleClick = (message) => {
         setActiveSection(message)
-    }
-
-    const handleMenu = (message) => {
-        setMenu(message)
-        console.log(message)
     }
 
     const handleSubmit = (e) => {
@@ -124,13 +123,13 @@ export const DataProvider = ({ children }) => {
             noteBody, setNoteBody,
             search, setSearch,
             handleSubmit, handleDelete,
-            trash, archived, menu, setMenu,
+            trash, archived, menu, toggleSidebar,
             handleRestore, handleArchives,
             handleArchivedDelete, handleUnarchive,
             handlePermanentDelete, navigate,
             handleEditedSubmit, handleCancel,
             activeSection, setActiveSection,
-            handleClick, handleMenu
+            handleClick
         }}>
             {children}
         </DataContext.Provider>

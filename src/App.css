@@ -1,29 +1,30 @@
 :root {
     --header-bgc: #fde497;
     --header-color: #484949;
-    --nav-hov-bgc: #FEEFC3;
+    --nav-hov-bgc: #feefc3;
     --font-color: #202124;
     --empty-logo: #5f6368b6;
     --logo-font-color: #484949;
-    --non-focus: #FEEFC3;
-    --icon-hover-bgc: #FEEFC3;
+    --non-focus: #feefc3;
+    --icon-hover-bgc: #feefc3;
     --icon-color: #202124;
     --box-shadow: #fde497;
 }
 
 .header {
-    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: var(--header-bgc);
     color: var(--header-color);
-    padding: 0 2rem;
+    padding: 1rem 2rem;
     box-shadow: 0 0 2px var(--font-color);
     position: sticky;
     top: 0;
     z-index: 9999;
 }
+
+@media (max-width: 720px) {}
 
 .menu-bar {
     background-color: var(--header-bgc);
@@ -32,10 +33,6 @@
     font-size: 2rem;
     padding: 5px;
     cursor: pointer;
-}
-
-.sidebar {
-    display: flex;
 }
 
 .menu-bar:hover {
@@ -67,7 +64,7 @@
     font-weight: 650;
 }
 
-.nav-button.active{
+.nav-button.active {
     background-color: var(--nav-hov-bgc);
     color: var(--font-color);
 }
@@ -93,7 +90,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: ease-in-out .2s;
+    transition: ease-in-out 0.2s;
 }
 
 .nav-button svg {
@@ -138,8 +135,9 @@
 .notes:hover {
     box-shadow: 2px 2px 10px var(--box-shadow);
     transform: scale(1.01);
-    transition: ease-in-out .2s;
+    transition: ease-in-out 0.2s;
 }
+
 .notes .note-title {
     border-bottom: 1px solid var(--header-bgc);
     padding-bottom: 10px;
@@ -189,7 +187,6 @@
     color: var(--logo-font-color);
 }
 
-
 .content-section a {
     color: black;
     text-decoration: none;
@@ -207,7 +204,6 @@
 }
 
 .button-groups {
-    /* visibility: hidden; */
     margin-right: 10px;
     padding: 5px;
     font-size: 1.2rem;
@@ -216,7 +212,7 @@
     height: 40px;
     border: none;
     cursor: pointer;
-    transition: ease-in-out .2s;
+    transition: ease-in-out 0.2s;
     background-color: var(--nav-hov-bgc);
     color: var(--font-color);
 }
@@ -258,10 +254,10 @@
     width: 60vw;
     padding: 10px;
     font-size: 1.02rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     border-radius: 5px;
     border: 1px solid var(--box-shadow);
-    transition: ease-in-out .2s;
+    transition: ease-in-out 0.2s;
 }
 
 .title-input:focus,
@@ -271,6 +267,7 @@
     box-shadow: 1px 1px 5px var(--box-shadow);
     outline: none;
 }
+
 .body-input,
 .edit-body {
     width: 60vw;
@@ -279,7 +276,7 @@
     resize: vertical;
     font-size: 1.02rem;
     font-family: Arial, sans-serif;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     border-radius: 5px;
     border: 1px solid var(--box-shadow);
 }
@@ -296,6 +293,7 @@
     display: flex;
     flex-direction: row-reverse;
 }
+
 .add-button,
 .edit-submit-button,
 .cancel-button {
@@ -303,7 +301,7 @@
     width: 100px;
     border-radius: 5px;
     border: none;
-    transition: ease-in-out .2s;
+    transition: ease-in-out 0.2s;
     background-color: var(--nav-hov-bgc);
     color: var(--font-color);
     font-size: 1.02rem;
@@ -371,7 +369,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #fff; */
 }
 
 .search-button:hover {
@@ -382,20 +379,50 @@
     .notes-section {
         grid-template-columns: 80vw;
     }
+
     .add-form {
         grid-template-columns: 90vw;
         margin: 5vw;
         margin-top: 3rem;
     }
+
     .title-input,
     .body-input {
         width: 70vw;
     }
+
     .section-2,
     .section-1 {
         width: 75vw;
     }
+
     .logo {
         flex-grow: 0;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-input {
+        width: 200px;
+    }
+
+    .sidebar {
+        display: flex;
+    }
+
+    .nav-button{
+        display: block;
+        width: 250px;
+        text-align: left;
+        margin-left: -1rem;
     }
 }

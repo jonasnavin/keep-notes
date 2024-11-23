@@ -1,8 +1,8 @@
-import React from 'react'
-import './App.css'
-import { DataProvider } from './context/DataContext'
-import Header from './components/Header'
-import Main from './components/Main'
+import React from "react";
+import "./App.css";
+import { DataProvider } from "./context/DataContext";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       <Main />
     </DataProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;
