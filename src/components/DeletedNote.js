@@ -4,6 +4,7 @@ import { TbTrashXFilled } from 'react-icons/tb'
 import { FaTrashAlt } from 'react-icons/fa'
 import { MdRestoreFromTrash } from 'react-icons/md'
 import { SiGoogledocs } from 'react-icons/si'
+import SearchNote from './SearchNote'
 
 const DeletedNote = () => {
     const { trash, search, setSearch, handleRestore, handlePermanentDelete } = useContext(DataContext)
@@ -18,6 +19,7 @@ const DeletedNote = () => {
 
     return (
         <>
+            <SearchNote />
             {
                 finalNotes.length ? (
                     <section className='notes-section'>
@@ -60,7 +62,7 @@ const DeletedNote = () => {
                         <FaTrashAlt className='svg' />
                         <p className='svg-hint'>No notes in Recyle Bin</p>
                     </section>
-                ): !finalNotes.length ? (
+                ) : !finalNotes.length ? (
                     <section className='empty-section'>
                         <SiGoogledocs className='svg' />
                         <p className='svg-hint'>Search not found</p>

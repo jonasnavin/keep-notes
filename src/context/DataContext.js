@@ -7,17 +7,18 @@ const DataContext = createContext({})
 export const DataProvider = ({ children }) => {
 
     const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('notes')) || [])
+    const [archived, setArchived] = useState(JSON.parse(localStorage.getItem('archived')) || [])
+    const [trash, setTrash] = useState(JSON.parse(localStorage.getItem('deleted')) || [])
 
     const [noteTitle, setNoteTitle] = useState('')
     const [noteBody, setNoteBody] = useState('')
     const [editTitle, setEditTitle] = useState('')
     const [editBody, setEditBody] = useState('')
     const [search, setSearch] = useState('')
-    const [trash, setTrash] = useState(JSON.parse(localStorage.getItem('deleted')) || [])
-    const [archived, setArchived] = useState(JSON.parse(localStorage.getItem('archived')) || [])
-    const navigate = useNavigate()
     const [activeSection, setActiveSection] = useState('home')
     const [menu, setMenu] = useState(true)
+
+    const navigate = useNavigate()
 
     const toggleSidebar = () => {
         setMenu(prevState => !prevState)
@@ -28,7 +29,7 @@ export const DataProvider = ({ children }) => {
     }
 
     const handleSubmit = (e) => {
-        const dateTime = format(new Date(),'d MMM, yyyy p')
+        const dateTime = format(new Date(), 'd MMM, yyyy p')
         e.preventDefault()
         if (noteTitle && noteBody) {
             const id = Math.random() * 10

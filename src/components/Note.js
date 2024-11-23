@@ -9,8 +9,8 @@ const Note = () => {
     const { notes, handleDelete, handleArchives, setSearch } = useContext(DataContext)
     const note = notes.find(note => (note.id).toString() === id)
     useEffect(() => {
-          setSearch('')
-      }, [setSearch])
+        setSearch('')
+    }, [setSearch])
     return (
         <section className='view-note'>
             {

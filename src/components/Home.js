@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { MdArchive } from 'react-icons/md'
 import { TbTrashXFilled } from 'react-icons/tb'
 import { SiGoogledocs } from 'react-icons/si'
+import SearchNote from './SearchNote'
 
 const Home = () => {
 
@@ -20,7 +21,9 @@ const Home = () => {
 
 
     return (
-        <> {
+        <>
+        <SearchNote />
+        {
             finalNotes.length ? (
                 <section className='notes-section'>
                     {

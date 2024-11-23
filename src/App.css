@@ -146,14 +146,13 @@
 
 .notes .note-body {
     margin-top: 10px;
-    padding: 5px;
+    padding: 0 5px;
     border-radius: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .view-note .note-body {
@@ -178,7 +177,7 @@
 .empty-section .svg-hint {
     text-align: center;
     margin-top: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--logo-font-color);
 }
 
