@@ -17,11 +17,10 @@ export const DataProvider = ({ children }) => {
     const [archived, setArchived] = useState(JSON.parse(localStorage.getItem('archived')) || [])
     const navigate = useNavigate()
     const [activeSection, setActiveSection] = useState('home')
-    const [menu, setMenu] = useState(false)
+    const [menu, setMenu] = useState(true)
 
     const toggleSidebar = () => {
         setMenu(prevState => !prevState)
-        console.log(menu)
     }
 
     const handleClick = (message) => {
