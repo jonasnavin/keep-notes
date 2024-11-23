@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import DataContext from '../context/DataContext'
 
 const AddNote = () => {
-  const { noteTitle, setNoteTitle, noteBody, setNoteBody, handleSubmit, setSearch } = useContext(DataContext)
+  const { noteTitle, setNoteTitle, noteBody, setNoteBody, handleSubmit, setSearch, handleClick } = useContext(DataContext)
   useEffect(() => {
     setNoteTitle('')
     setNoteBody('')
@@ -35,6 +35,7 @@ const AddNote = () => {
         <button
           type='submit'
           className='add-button'
+          onClick={() => handleClick('home')}
         >
           Add
         </button>

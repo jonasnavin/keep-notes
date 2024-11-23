@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import SearchNote from "./SearchNote";
 import { BiSolidAddToQueue } from "react-icons/bi";
 import { MdArchive, MdHome } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -21,17 +20,16 @@ const Header = () => {
         <div className={`menu  ${width < 720 ? "" : "visible"}`}>
           <GiHamburgerMenu className="menu-bar" onClick={toggleSidebar} />
         </div>
-        <Link to="/">
+        <Link to="/"  onClick={() => handleClick('home')}>
           <img src={logo} alt="logo" />
         </Link>
-        <h2>
+        <h2 onClick={() => handleClick('home')}>
           <Link to="/">Keep Notes</Link>
         </h2>
       </div>
       <nav className={`navigation ${width < 720 && menu ? "visible" : ""}`}>
         <div className="nav">
-          <SearchNote />
-          <Link to="/">
+          <Link to="/" onClick={toggleSidebar}>
             <button
               title="Home"
               className={`nav-button ${
@@ -42,7 +40,7 @@ const Header = () => {
               <MdHome /> Home
             </button>
           </Link>
-          <Link to="/add-note">
+          <Link to="/add-note" onClick={toggleSidebar}>
             <button
               title="Add Note"
               className={`nav-button ${
@@ -53,7 +51,7 @@ const Header = () => {
               <BiSolidAddToQueue /> Add
             </button>
           </Link>
-          <Link to="/archived-notes">
+          <Link to="/archived-notes" onClick={toggleSidebar}>
             <button
               title="Archived"
               className={`nav-button ${
@@ -64,7 +62,7 @@ const Header = () => {
               <MdArchive /> Archive
             </button>
           </Link>
-          <Link to="/trash">
+          <Link to="/trash" onClick={toggleSidebar}>
             <button
               title="Trash"
               className={`nav-button ${

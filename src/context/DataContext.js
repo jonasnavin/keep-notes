@@ -21,6 +21,7 @@ export const DataProvider = ({ children }) => {
 
     const toggleSidebar = () => {
         setMenu(prevState => !prevState)
+        console.log(menu)
     }
 
     const handleClick = (message) => {
@@ -28,7 +29,7 @@ export const DataProvider = ({ children }) => {
     }
 
     const handleSubmit = (e) => {
-        const dateTime = format(new Date(), 'd MMMM, yyyy p')
+        const dateTime = format(new Date(),'d MMM, yyyy p')
         e.preventDefault()
         if (noteTitle && noteBody) {
             const id = Math.random() * 10
@@ -100,7 +101,7 @@ export const DataProvider = ({ children }) => {
     }
 
     const handleEditedSubmit = (id) => {
-        const dateTime = format(new Date(), 'd MMMM, yyyy p')
+        const dateTime = format(new Date(), 'd MMM, yyyy p')
         const editedNote = { id: parseFloat(id), title: editTitle, body: editBody, dateTime: dateTime }
         const updatedNote = notes.map(note => (note.id).toString() === id ? { ...editedNote } : note)
         setNotes(updatedNote)
