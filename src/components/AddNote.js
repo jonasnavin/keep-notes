@@ -2,14 +2,15 @@ import React, { useContext, useEffect } from 'react'
 import DataContext from '../context/DataContext'
 
 const AddNote = () => {
-  const { noteTitle, setNoteTitle, noteBody, setNoteBody, handleSubmit, setSearch, handleClick } = useContext(DataContext)
+  const { noteTitle, setActiveSection, setNoteTitle, noteBody, setNoteBody, handleSubmit, setSearch, handleClick } = useContext(DataContext)
   useEffect(() => {
     setNoteTitle('')
     setNoteBody('')
   }, [setNoteTitle, setNoteBody])
   useEffect(() => {
     setSearch('')
-  }, [setSearch])
+    setActiveSection('add')
+  }, [setSearch, setActiveSection])
   return (
     <form
       className='add-form'

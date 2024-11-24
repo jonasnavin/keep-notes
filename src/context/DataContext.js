@@ -6,7 +6,14 @@ const DataContext = createContext({})
 
 export const DataProvider = ({ children }) => {
 
-    const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('notes')) || [])
+    const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('notes')) || [
+        {
+            id: 1,
+            title: "Welcome to Your Notes!",
+            body: "Hello there! I'm excited to help you organize your thoughts. Start by adding your first note and stay productive.",
+            dateTime: ""
+        }
+    ])
     const [archived, setArchived] = useState(JSON.parse(localStorage.getItem('archived')) || [])
     const [trash, setTrash] = useState(JSON.parse(localStorage.getItem('deleted')) || [])
 

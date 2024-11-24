@@ -5,6 +5,7 @@ import { MdArchive } from 'react-icons/md'
 import { TbTrashXFilled } from 'react-icons/tb'
 import { SiGoogledocs } from 'react-icons/si'
 import SearchNote from './SearchNote'
+import { ImSearch } from 'react-icons/im'
 
 const Home = () => {
 
@@ -70,7 +71,7 @@ const Home = () => {
                     </section>
                 ) : !finalNotes.length ? (
                     <section className='empty-section'>
-                        <SiGoogledocs className='svg' />
+                        <ImSearch className='svg' />
                         <p className='svg-hint'>Search not found</p>
                     </section>
                 ) : null

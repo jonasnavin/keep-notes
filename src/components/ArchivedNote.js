@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react'
 import DataContext from '../context/DataContext'
 import { MdArchive, MdUnarchive } from 'react-icons/md'
 import { TbTrashXFilled } from 'react-icons/tb'
-import { SiGoogledocs } from 'react-icons/si'
 import SearchNote from './SearchNote'
+import { ImSearch } from 'react-icons/im'
 
 const ArchivedNote = () => {
-  const { archived, search, setSearch, handleUnarchive, handleArchivedDelete } = useContext(DataContext)
+  const { archived, setActiveSection, search, setSearch, handleUnarchive, handleArchivedDelete } = useContext(DataContext)
   const finalNotes = archived.filter(note => (
     (note.title).toLowerCase().includes(search.toLowerCase()) ||
     (note.body).toLowerCase().includes(search.toLowerCase())
@@ -14,7 +14,8 @@ const ArchivedNote = () => {
 
   useEffect(() => {
     setSearch('')
-  }, [setSearch])
+    setActiveSection('archive')
+  }, [setSearch, setActiveSection])
 
   return (
     <>
@@ -66,7 +67,7 @@ const ArchivedNote = () => {
           </section>
         ) : !finalNotes.length ? (
           <section className='empty-section'>
-            <SiGoogledocs className='svg' />
+            <ImSearch className='svg' />
             <p className='svg-hint'>Search not found</p>
           </section>
         ) : null

@@ -3,11 +3,11 @@ import DataContext from '../context/DataContext'
 import { TbTrashXFilled } from 'react-icons/tb'
 import { FaTrashAlt } from 'react-icons/fa'
 import { MdRestoreFromTrash } from 'react-icons/md'
-import { SiGoogledocs } from 'react-icons/si'
 import SearchNote from './SearchNote'
+import { ImSearch } from 'react-icons/im'
 
 const DeletedNote = () => {
-    const { trash, search, setSearch, handleRestore, handlePermanentDelete } = useContext(DataContext)
+    const { trash, search, setActiveSection, setSearch, handleRestore, handlePermanentDelete } = useContext(DataContext)
     const finalNotes = trash.filter(note => (
         (note.title).toLowerCase().includes(search.toLowerCase()) ||
         (note.body).toLowerCase().includes(search.toLowerCase())
@@ -15,7 +15,8 @@ const DeletedNote = () => {
 
     useEffect(() => {
         setSearch('')
-    }, [setSearch])
+        setActiveSection('trash')
+    }, [setSearch, setActiveSection])
 
     return (
         <>
@@ -64,7 +65,7 @@ const DeletedNote = () => {
                     </section>
                 ) : !finalNotes.length ? (
                     <section className='empty-section'>
-                        <SiGoogledocs className='svg' />
+                        <ImSearch className='svg' />
                         <p className='svg-hint'>Search not found</p>
                     </section>
                 ) : null
